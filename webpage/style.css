@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f7fc;
+    color: #222;
+}
+
+/* Header */
+.top-bar {
+    background: linear-gradient(90deg, #6f63e6, #7b6ff2);
+    color: white;
+    padding: 28px;
+    text-align: center;
+}
+
+.top-bar h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.top-bar span {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Layout */
+.page-wrap {
+    padding: 35px 45px;
+}
+
+.unit-block {
+    margin-bottom: 45px;
+}
+
+.unit-block h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+/* Cards */
+.card-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.task-card {
+    background: #ffffff;
+    width: 260px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Left indicator bar */
+.task-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+}
+
+/* Status colors */
+.done::after {
+    background-color: #27ae60;
+}
+
+.wait::after {
+    background-color: #f39c12;
+}
+
+.task-card h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.task-card p {
+    margin: 10px 0 14px;
+    font-size: 15px;
+    color: #555;
+}
+
+.status {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Experiment card clickable styling */
+.experiment-card {
+    cursor: pointer;
+    user-select: none;
+}
+
+.experiment-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.done .status {
+    color: #27ae60;
+}
+
+.wait .status {
+    color: #f39c12;
+}

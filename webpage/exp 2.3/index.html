@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG Test</title>
+
+  <style>
+    body {
+      background: #f4f6f8;
+      font-family: Arial;
+    }
+
+    .container {
+      background: white;
+      width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    svg {
+      border: 3px solid black;
+      background: white;
+      cursor: crosshair;
+      margin: 20px auto;
+      display: block;
+    }
+
+    /* Navigation styling */
+    .navigation {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 30px;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .back-btn:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>SVG DRAW TEST</h2>
+    <svg id="canvas" width="500" height="350"></svg>
+    <p>Click and drag inside the box</p>
+  </div>
+
+  <div class="navigation">
+    <a href="../index.html" class="back-btn">← Back to Main Page</a>
+  </div>
+
+  <script>
+    const svg = document.getElementById("canvas");
+    let drawing = false;
+
+    svg.addEventListener("mousedown", () => drawing = true);
+    svg.addEventListener("mouseup", () => drawing = false);
+    svg.addEventListener("mouseleave", () => drawing = false);
+
+    svg.addEventListener("mousemove", (e) => {
+      if (!drawing) return;
+
+      const rect = svg.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const circle = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+      );
+      circle.setAttribute("cx", x);
+      circle.setAttribute("cy", y);
+      circle.setAttribute("r", 3);
+      circle.setAttribute("fill", "black");
+
+      svg.appendChild(circle);
+    });
+  </script>
+
+</body>
+</html>
